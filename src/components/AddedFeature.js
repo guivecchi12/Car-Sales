@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import {removeFeature} from "../actions"
 
 const AddedFeature = props => {
-
+  console.log("AddedFeature props: ", props)
   const removeItem = () => {
+    console.log("removeItem proprs.feature = ", props.feature);
     props.removeFeature(props.feature);
   };
 

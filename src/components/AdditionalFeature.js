@@ -1,18 +1,14 @@
-import React, { useState, useReducer } from 'react';
+import React from 'react';
 import { connect } from "react-redux";
 import { addFeature } from "../actions"
-import {featureReducer} from "../reducers/featureReducer";
 
 
 const AdditionalFeature = props => {
-  console.log(props);
-
-  const [state, dispatch] = useReducer(featureReducer);
+  console.log("AdditionalFeature props: ", props);
 
   const addingFeature = () => {
-    console.log(props);
-    // dispatch({type: "ADD_FEATURE", payload: props});
-    addFeature(props);
+    console.log("addingFeature proprs.feature = ", props.feature);
+    props.addFeature(props.feature);
   }
 
 
@@ -25,13 +21,6 @@ const AdditionalFeature = props => {
   );
 };
 
-
-const mapStateToProps = state => {
-  return{
-    name: state.AddReducer.name,
-    price: state.AddReducer.price
-  };
-};
 const mapDispatchToProps = { addFeature };
 
-export default AdditionalFeature;
+export default connect(null, mapDispatchToProps) (AdditionalFeature);
